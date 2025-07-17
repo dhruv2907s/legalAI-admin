@@ -1,0 +1,221 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* LegalAI Design System - Deep Space Blue & Neon Amber Theme 
+All colors MUST be HSL for proper theming.
+*/
+
+@layer base {
+  :root {
+    /* Core Theme - Deep Purple & Teal */
+    --background: 285 45% 6%;             /* Deep purple background */
+    --foreground: 180 85% 65%;            /* Bright teal text */
+
+    --card: 285 35% 10%;                  /* Darker purple cards */
+    --card-foreground: 180 75% 80%;       /* Light teal text on cards */
+
+    --popover: 285 35% 10%;
+    --popover-foreground: 180 75% 80%;
+
+    --primary: 180 85% 65%;               /* Bright teal primary */
+    --primary-foreground: 285 45% 6%;     /* Deep purple on teal */
+
+    --secondary: 285 25% 15%;             /* Mid-tone purple */
+    --secondary-foreground: 180 75% 80%;  /* Light teal on secondary */
+
+    --muted: 285 15% 20%;                 /* Muted purple-gray */
+    --muted-foreground: 180 30% 70%;      /* Muted teal */
+
+    --accent: 180 70% 55%;                /* Slightly dimmer teal */
+    --accent-foreground: 285 45% 6%;      /* Deep purple on accent */
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 285 20% 18%;                /* Subtle purple borders */
+    --input: 285 20% 18%;
+    --ring: 180 85% 65%;                  /* Teal focus rings */
+
+    --radius: 1rem;
+
+    /* Glassmorphism & Glow Effects */
+    --glass-bg: 285 35% 10% / 0.4;       /* Semi-transparent card background */
+    --glass-border: 180 85% 65% / 0.2;   /* Subtle teal glass border */
+    --glow-primary: 180 85% 65% / 0.3;   /* Teal glow */
+    --glow-secondary: 285 60% 70% / 0.2; /* Purple glow */
+    
+    /* Gradients - Enhanced for sophistication */
+    --gradient-primary: linear-gradient(135deg, hsl(285 45% 6%), hsl(285 35% 10%), hsl(285 25% 15%));
+    --gradient-card: linear-gradient(145deg, hsl(285 35% 10% / 0.8), hsl(285 25% 15% / 0.6), hsl(180 20% 25% / 0.1));
+    --gradient-teal: linear-gradient(135deg, hsl(180 85% 65%), hsl(180 70% 55%), hsl(175 60% 45%));
+    --gradient-purple: linear-gradient(135deg, hsl(285 50% 25%), hsl(285 40% 15%), hsl(285 45% 6%));
+    --gradient-hero: linear-gradient(180deg, hsl(285 45% 6% / 0.95), hsl(285 35% 10% / 0.85), hsl(180 20% 25% / 0.1));
+    --gradient-text: linear-gradient(135deg, hsl(180 85% 65%), hsl(180 95% 75%), hsl(180 75% 55%));
+    --gradient-border: linear-gradient(135deg, hsl(180 60% 50% / 0.3), hsl(285 40% 30% / 0.3), hsl(180 40% 40% / 0.2));
+    
+    /* Subtle Shadows & Effects */
+    --shadow-glass: 0 8px 32px hsl(285 45% 6% / 0.4), 0 2px 8px hsl(285 35% 10% / 0.3);
+    --shadow-soft: 0 4px 20px hsl(180 85% 65% / 0.15);
+    --shadow-depth: 0 12px 40px hsl(285 45% 6% / 0.5), 0 4px 12px hsl(285 35% 10% / 0.4);
+    
+    /* Reduced Glow Effects */
+    --glow-subtle: 0 0 20px hsl(180 85% 65% / 0.1);
+    --glow-text: 0 2px 8px hsl(180 85% 65% / 0.2);
+    
+    /* Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark mode uses deeper purple theme */
+    --background: 285 45% 4%;            /* Even deeper purple */
+    --foreground: 180 85% 70%;           /* Brighter teal */
+    
+    --card: 285 40% 8%;
+    --card-foreground: 180 75% 85%;
+    
+    --glow-primary: 180 85% 65% / 0.4;   /* Stronger glow in dark */
+    --glow-secondary: 285 60% 70% / 0.3;
+
+    --sidebar-background: 285 35% 10%;
+    --sidebar-foreground: 180 75% 80%;
+    --sidebar-primary: 180 85% 65%;
+    --sidebar-primary-foreground: 285 45% 6%;
+    --sidebar-accent: 285 25% 15%;
+    --sidebar-accent-foreground: 180 75% 80%;
+    --sidebar-border: 285 20% 18%;
+    --sidebar-ring: 180 85% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background: var(--gradient-primary);
+    min-height: 100vh;
+  }
+  
+  /* Enhanced Glassmorphism */
+  .glass {
+    background: hsl(var(--glass-bg));
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--glass-border));
+    box-shadow: var(--shadow-glass);
+  }
+  
+  .glass-card {
+    background: var(--gradient-card);
+    backdrop-filter: blur(24px);
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    box-shadow: var(--shadow-glass), inset 0 1px 0 hsl(48 85% 55% / 0.1);
+    position: relative;
+  }
+  
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: var(--gradient-border);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: subtract;
+    pointer-events: none;
+  }
+  
+  /* Subtle Text Effects */
+  .gradient-text {
+    background: var(--gradient-text);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradient-shift 4s ease-in-out infinite;
+  }
+  
+  .text-glow {
+    text-shadow: var(--glow-text);
+  }
+  
+  /* Subtle Shadow Effects */
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .shadow-depth {
+    box-shadow: var(--shadow-depth);
+  }
+  
+  /* Enhanced Breathing Animation */
+  .breathe {
+    animation: breathe 4s ease-in-out infinite;
+  }
+  
+  @keyframes breathe {
+    0%, 100% { 
+      transform: scale(1);
+      filter: brightness(1);
+    }
+    50% { 
+      transform: scale(1.01);
+      filter: brightness(1.05);
+    }
+  }
+  
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  
+  /* Floating Gradient Orbs */
+  .floating-orb {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--gradient-teal);
+    filter: blur(60px);
+    opacity: 0.06;
+    animation: float 8s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.06; }
+    33% { transform: translateY(-30px) rotate(120deg); opacity: 0.08; }
+    66% { transform: translateY(15px) rotate(240deg); opacity: 0.04; }
+  }
+  
+  /* Subtle 3D Effects */
+  .card-3d {
+    transform-style: preserve-3d;
+    transition: var(--transition-spring);
+  }
+  
+  .card-3d:hover {
+    transform: rotateX(2deg) rotateY(2deg) translateZ(8px);
+    box-shadow: var(--shadow-depth);
+  }
+}
