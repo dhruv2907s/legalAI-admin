@@ -1,10 +1,12 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaBalanceScale, FaGavel, FaHandsHelping, FaRocket, FaBrain, FaLock } from 'react-icons/fa';
 import { Search, Users, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import heroImage from '@/assets/hero-legal-ai.jpg';
+import LoginModal from './LoginModal';
+
 
 const modules = [
   {
@@ -71,6 +73,7 @@ const testimonials = [
 ];
 
 const AdminLandingPage = () => {
+  const [showLoginModal, setShowLoginModal] = useState(false);
   const featuresRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
   const teamRef = useRef<HTMLDivElement>(null);
@@ -119,7 +122,11 @@ const AdminLandingPage = () => {
             >
               Team
             </button>
-            <Button variant="outline" className="glass border-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 shadow-soft">
+            <Button 
+              variant="outline" 
+              className="glass border-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 shadow-soft"
+              onClick={() => setShowLoginModal(true)}
+            >
               Login →
             </Button>
           </nav>
@@ -361,6 +368,10 @@ const AdminLandingPage = () => {
           <span className="text-primary"> Courtroom in the Cloud</span>
         </p>
       </footer>
+      {/* Login Modal */}
+      {showLoginModal && (
+        <LoginModal onClose={() => setShowLoginModal(false)} />
+      )}
     </div>
   );
 };
