@@ -8,8 +8,8 @@ const LoginModal = ({ onClose }: { onClose: () => void }) => {
 
   const handleSubmit = async () => {
     const endpoint = isNewUser 
-      ? 'http://localhost:5000/legalai/api/auth/register' 
-      : 'http://localhost:5000/legalai/api/auth/login';
+      ? 'http://nyayapravah.info/legalai/api/auth/register'  //localhost:5000
+      : 'http://nyayapravah.info/legalai/api/auth/login';    //localhost:5000
 
     try {
       const response = await fetch(endpoint, {
